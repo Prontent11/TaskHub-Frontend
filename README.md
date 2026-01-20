@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# Frontend Repository
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern frontend application built with React and Vite.
 
-Currently, two official plugins are available:
+## 🚀 Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
 
-## React Compiler
+Before you begin, ensure you have the following installed:
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **Node.js** ≥ 18.x
+- **npm** (comes with Node.js)
+- - **Backend API** - Ensure the backend is set up and running. See [Backend Repository](https://github.com/Prontent11/Multi-Tenant-SaaS-Backend)
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Clone the repository**
+```bash
+git clone https://github.com/Prontent11/TaskHub-Frontend.git
+cd frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. **Install dependencies**
+```bash
+npm install
 ```
+
+3. **Configure API Base URL**
+
+Create a `.env` file in the root directory and add:
+```dotenv
+VITE_BASE_URL=http://localhost:3000/api
+```
+Then update the API configuration to use the environment variable:
+```typescript
+// src/api/axios.ts
+baseURL: import.meta.env.VITE_BASE_URL
+```
+4. **Start the development server**
+```bash
+npm run dev
+```
+
+The application will be available at:
+```
+http://localhost:5173
+```
+
+## 📦 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
+
+## 🛠️ Tech Stack
+
+- **React** - UI library
+- **Vite** - Build tool and dev server
+- **TypeScript** - Type safety
+- **Axios** - HTTP client
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+```env
+VITE_API_BASE_URL=http://localhost:3000/api
+```
+
+### Backend Integration
+
+Ensure your backend API is running on `http://localhost:3000` before starting the frontend. Update the `baseURL` in `src/api/axios.ts` if your backend runs on a different port.
+
+## 📝 Development
+
+### Project Structure
+```
+frontend/
+├── src/
+│   ├── api/          # API configuration
+│   ├── components/   # React components
+│   ├── pages/        # Page components
+│   ├── auth/         # Authentication components
+│   └── App.tsx       # Main app component
+├── public/           # Static assets
+└── package.json      # Dependencies
+```
+
+
+### API Connection Issues
+
+Verify that:
+- Backend server is running on `http://localhost:3000`
+- CORS is properly configured on the backend
+- API base URL is correctly set in `src/api/axios.ts`

@@ -10,7 +10,18 @@ Before you begin, ensure you have the following installed:
 
 - **Node.js** ≥ 18.x
 - **npm** (comes with Node.js)
-- - **Backend API** - Ensure the backend is set up and running. See [Backend Repository](https://github.com/Prontent11/Multi-Tenant-SaaS-Backend)
+- **Backend API** - Ensure the backend is set up and running. See [Backend Repository](https://github.com/Prontent11/Multi-Tenant-SaaS-Backend)
+
+## 🔐 Login Access
+
+### Super Admin Login
+- **URL:** `http://localhost:5173/`
+- **Email:** admin@platform.com  
+- **Password:** admin123
+
+### Organization Login
+- **URL:** `http://localhost:5173/org/login`
+- Use organization-specific credentials
 
 ### Installation
 
